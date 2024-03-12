@@ -1,0 +1,77 @@
+<div class="flex max-w-[768px] mx-auto justify-between items-center my-12">
+  <div class="logo">
+    <img src="../assets/logo.svg" alt="logo" />
+  </div>
+  <div class="switchers flex">
+    <label
+      [ngClass]="{
+        'relative flex justify-around items-center w-full h-[56px] rounded-[5px] px-5 py-4 cursor-pointer': true,
+        'bg-white': !isDarkTheme,
+        'bg-[#2B3844] text-white': isDarkTheme
+      }"
+    >
+      <div>
+        <p class="text-[12px] md:text-[14px]">Sans Serif</p>
+      </div>
+
+      <div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          fill="none"
+          [attr.transform]="'rotate(' + rotation + ')'"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M9.45 3.45L6 6.9L2.55 3.45L1.5 4.5L6 9L10.5 4.5L9.45 3.45Z"
+            [attr.fill]="isDarkTheme ? 'white' : 'black'"
+          />
+        </svg>
+      </div>
+
+      @if (showFilters) {
+      <div
+        class=""
+        [ngClass]="{
+          'absolute left-0 right-0 top-full z-10 mt-2 grid max-h-[195px] gap-[1px] overflow-hidden py-4 rounded-[5px]': true,
+          'bg-[#2B3844]': isDarkTheme,
+          'bg-white': !isDarkTheme
+        }"
+      >
+        <ul class="flex flex-col space-y-3 pl-5">
+          <li>Sans Serif</li>
+          <li>Serif</li>
+          <li>Mono</li>
+        </ul>
+      </div>
+      }
+    </label>
+
+    <label class="inline-flex items-center cursor-pointer">
+      <input type="checkbox" value="" class="sr-only peer" />
+      <div
+        class="relative w-14 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-8 after:transition-all"
+      ></div>
+      <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 22 22"
+        >
+          <path
+            fill="none"
+            stroke="#838383"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z"
+          />
+        </svg>
+      </span>
+    </label>
+  </div>
+</div>
