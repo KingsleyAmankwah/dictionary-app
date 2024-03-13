@@ -3,6 +3,8 @@
     type="text"
     class="bg-zinc-100 w-full placeholder:font-normal font-bold p-4 rounded-lg focus:outline-none focus:outline-purple-500"
     placeholder="Search for a word.."
+    [(ngModel)]="word"
+    (keyup.enter)="searchWord()"
   />
   <svg
     xmlns="http://www.w3.org/2000/svg"
