@@ -1,0 +1,26 @@
+.word::after {
+  position: relative;
+  display: block;
+  content: "";
+  width: calc(100% - 110px);
+  left: 110px;
+  top: -13px;
+  height: 1px;
+  background-color: #c0c0c0;
+}
+
+/* li::marker {
+  color: blue;
+  font-size: 20px;
+} */
+
+li {
+  list-style-type: none;
+}
+
+li::before {
+  content: "•";
+  color: #a445ed;
+  font-size: 20px;
+  margin-right: 10px;
+}
