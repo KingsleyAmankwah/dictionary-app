@@ -1,10 +1,15 @@
 <div class="relative mb-12">
   <input
     type="text"
-    class="bg-zinc-100 w-full placeholder:font-normal font-bold p-4 rounded-lg focus:outline-none focus:outline-purple-500"
+    class=""
     placeholder="Search for a word.."
     [(ngModel)]="word"
     (keyup.enter)="searchWord()"
+    [ngClass]="{
+      'w-full placeholder:font-normal font-bold p-4 rounded-lg focus:outline-none focus:outline-purple-500': true,
+      'bg-zinc-100': !isDarkTheme,
+      'bg-[#2B3844]': isDarkTheme
+    }"
   />
   <svg
     xmlns="http://www.w3.org/2000/svg"
