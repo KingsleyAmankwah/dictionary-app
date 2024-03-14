@@ -1,5 +1,5 @@
 <app-navbar />
 <div class="lg:mx-auto flex flex-col mx-2 lg:max-w-[768px]">
-  <app-search-bar />
-  <app-content />
+  <app-search-bar (searchEvent)="results = $event" />
+  <app-content [results]="results" />
 </div>
