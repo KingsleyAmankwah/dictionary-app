@@ -26,9 +26,7 @@
   <div class="switchers flex">
     <label
       [ngClass]="{
-        'relative flex justify-around items-center w-full h-[56px] rounded-[5px] px-5 py-4 cursor-pointer': true,
-        'bg-white': !isDarkTheme,
-        'bg-[#2B3844] text-white': isDarkTheme
+        'relative flex justify-around items-center w-full h-[56px] rounded-[5px] px-5 py-4 cursor-pointer': true, 
       }"
     >
       <div>
@@ -58,8 +56,6 @@
         class=""
         [ngClass]="{
           'absolute left-0 right-0 top-full z-10 mt-2 grid max-h-[195px] gap-[1px] overflow-hidden py-4 rounded-[5px]': true,
-          'bg-[#2B3844]': isDarkTheme,
-          'bg-white': !isDarkTheme
         }"
       >
         <ul class="flex flex-col space-y-3 pl-5">
@@ -75,6 +71,7 @@
       <input type="checkbox" value="" class="sr-only peer" />
       <div
         class="relative w-14 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 md:after:w-[26.5px] after:w-[26px] after:transition-all"
+        (click)="toggleTheme()"
       ></div>
       <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
         <svg
