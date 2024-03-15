@@ -11,13 +11,24 @@ import { AppService } from '../services/app.service';
 })
 export class NavbarComponent {
   public rotation = 0;
-  isDarkTheme = false;
-  public showFilters = false;
+  public isDarkTheme = false;
+  public showFonts = false;
+  public selectedFont = '';
 
   constructor(private appService: AppService) {}
 
-  toggleTheme() {
+  public toggleTheme() {
     this.isDarkTheme = !this.isDarkTheme;
     this.appService.toggleTheme();
+  }
+
+  public toggleFonts() {
+    this.showFonts = !this.showFonts;
+    this.rotation = this.showFonts ? 180 : 0;
+  }
+
+  public selectFont(font: string) {
+    this.selectedFont = font;
+    this.appService.setFontFamily(font);
   }
 }
