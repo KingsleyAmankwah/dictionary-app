@@ -26,11 +26,14 @@
   <div class="switchers flex">
     <label
       [ngClass]="{
-        'relative flex justify-around items-center w-full h-[56px] rounded-[5px] px-5 py-4 cursor-pointer': true, 
+        'relative flex justify-around items-center w-[150px] h-[56px] rounded-[5px] px-5 py-4 cursor-pointer': true, 
       }"
+      (click)="toggleFonts()"
     >
       <div>
-        <p class="text-[12px] md:text-[14px]">Sans Serif</p>
+        <p class="text-[12px] md:text-[14px]">
+          {{ selectedFont || "Sans-serif" }}
+        </p>
       </div>
 
       <div>
@@ -51,17 +54,18 @@
         </svg>
       </div>
 
-      @if (showFilters) {
+      @if (showFonts) {
       <div
-        class=""
         [ngClass]="{
           'absolute left-0 right-0 top-full z-10 mt-2 grid max-h-[195px] gap-[1px] overflow-hidden py-4 rounded-[5px]': true,
+          'bg-[#2B3844]': isDarkTheme,
+          'bg-zinc-100': !isDarkTheme
         }"
       >
         <ul class="flex flex-col space-y-3 pl-5">
-          <li>Sans Serif</li>
-          <li>Serif</li>
-          <li>Mono</li>
+          <li (click)="selectFont('Sans Serif')">Sans Serif</li>
+          <li (click)="selectFont('Serif')">Serif</li>
+          <li (click)="selectFont('Mono')">Mono</li>
         </ul>
       </div>
       }
