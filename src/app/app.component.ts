@@ -21,16 +21,16 @@ import { AppService } from './services/app.service';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'dictionary-app';
   public results: Word[] = [];
-  isDarkTheme = false;
+  public fontClass = '';
+  private isDarkTheme = false;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private appService: AppService
   ) {}
 
-  applyTheme() {
+  private applyTheme() {
     if (this.isDarkTheme) {
       this.document.body.style.backgroundColor = '#000';
       this.document.body.style.color = '#fff';
@@ -40,10 +40,32 @@ export class AppComponent {
     }
   }
 
+  private applyFonts() {
+    switch (this.fontClass) {
+      case 'Sans-serif':
+        this.document.body.style.fontFamily = 'Sans-serif';
+        break;
+      case 'Serif':
+        this.document.body.style.fontFamily = 'Serif';
+        break;
+      case 'Mono':
+        this.document.body.style.fontFamily = 'monospace';
+        break;
+      default:
+        this.document.body.style.fontFamily = 'Sans-serif';
+        break;
+    }
+  }
+
   ngOnInit() {
     this.appService.isDarkTheme.subscribe((darkTheme) => {
       this.isDarkTheme = darkTheme;
       this.applyTheme();
+    });
+
+    this.appService.currentFont.subscribe((fontFamily) => {
+      this.fontClass = fontFamily;
+      this.applyFonts();
     });
   }
 }
