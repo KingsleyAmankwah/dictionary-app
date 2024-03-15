@@ -42,12 +42,12 @@
             </ul>
           </div>
 
-          <h2>Synonyms:</h2>
-          <div
-            class="flex flex-row gap-1"
-            *ngFor="let synonym of meaning.synonyms"
-          >
-            <p class="text-purple-500 font-bold">
+          <div class="flex flex-row flex-wrap gap-1">
+            <h2>Synonyms:</h2>
+            <p
+              *ngFor="let synonym of meaning.synonyms"
+              class="text-purple-500 font-bold"
+            >
               {{ synonym }}
             </p>
           </div>
