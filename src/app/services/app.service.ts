@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { Word } from '../interface';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +28,6 @@ export class AppService {
 
   public searchWord(word: string) {
     const url = `${this.API_URL}${word}`;
-    return this.http.get<Word[]>(url);
+    return this.http.get<Word[]>(url).pipe(map((response) => response[0]));
   }
 }
