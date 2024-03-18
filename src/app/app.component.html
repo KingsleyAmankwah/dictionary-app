@@ -1,5 +1,16 @@
 <app-navbar />
 <div class="lg:mx-auto flex flex-col mx-2 lg:max-w-[768px]">
-  <app-search-bar (searchEvent)="results = $event" />
+  <app-search-bar
+    (searchEvent)="results = $event"
+    (errorEvent)="handleErrorEvent($event)"
+  />
   <app-content [results]="results" />
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!results.length && !errorMessage" class="empty-message">
+    Please add something in the search bar.
+  </div>
 </div>
