@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AppService } from '../services/app.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -14,8 +14,8 @@ import { Word } from '../interface';
 export class SearchBarComponent {
   public isDarkTheme = false;
   public word: string = '';
-  // public results: string = '';
   @Output() public searchEvent = new EventEmitter<Word[]>();
+  @Output() public errorEvent = new EventEmitter<string>();
 
   constructor(private appService: AppService) {}
 
@@ -28,12 +28,18 @@ export class SearchBarComponent {
   public searchWord() {
     this.appService.searchWord(this.word).subscribe(
       (response) => {
-        this.searchEvent.emit(response);
-        console.log(response);
+        this.searchEvent.emit([response]);
       },
       (error) => {
-        console.error('Error fetching', error);
+        this.errorEvent.emit(error.error.message);
       }
     );
+  }
+
+  public onInputChange() {
+    if (!this.word) {
+      this.searchEvent.emit([]);
+      this.errorEvent.emit('');
+    }
   }
 }
