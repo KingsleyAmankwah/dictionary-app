@@ -1,8 +1,4 @@
 <div class="flex flex-col w-full h-full">
-  <div>
-    <!-- <li>{{ res.meanings }}</li> -->
-  </div>
-
   <div *ngFor="let res of results">
     <div class="flex flex-row justify-between mb-8">
       <div>
@@ -15,17 +11,19 @@
         </p>
       </div>
 
-      <!-- <audio controls src="{{ phonetic.audio }}"></audio> -->
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 75 75"
-        class="cursor-pointer md:w-[75px] md:h-[75px] w-[50px] h-[50px]"
-      >
-        <g fill="#A445ED" fill-rule="evenodd">
-          <circle cx="37.5" cy="37.5" r="37.5" opacity=".25" />
-          <path d="M29 27v21l21-10.5z" />
-        </g>
-      </svg>
+      <div *ngIf="res.phonetics[0]">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 75 75"
+          class="cursor-pointer md:w-[75px] md:h-[75px] w-[50px] h-[50px]"
+          (click)="playAudio(getFirstAudio(res.phonetics))"
+        >
+          <g fill="#A445ED" fill-rule="evenodd">
+            <circle cx="37.5" cy="37.5" r="37.5" opacity=".25" />
+            <path d="M29 27v21l21-10.5z" />
+          </g>
+        </svg>
+      </div>
     </div>
 
     <div class="flex flex-col">
