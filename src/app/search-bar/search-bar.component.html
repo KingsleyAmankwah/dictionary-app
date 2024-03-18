@@ -3,6 +3,7 @@
     type="text"
     class=""
     placeholder="Search for a word.."
+    (input)="onInputChange()"
     [(ngModel)]="word"
     (keyup.enter)="searchWord()"
     [ngClass]="{
@@ -10,6 +11,7 @@
       'bg-zinc-100': !isDarkTheme,
       'bg-[#2B3844]': isDarkTheme
     }"
+    maxlength="20"
   />
   <svg
     xmlns="http://www.w3.org/2000/svg"
