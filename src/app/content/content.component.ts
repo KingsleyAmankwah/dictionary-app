@@ -12,17 +12,13 @@ import { CommonModule } from '@angular/common';
 export class ContentComponent {
   @Input() public results: Word[] = [];
 
-  playAudio(audioSrc: string) {
-    const audioElement = document.createElement('audio');
-    audioElement.src = audioSrc;
-    audioElement.play();
+ public getFirstAudio(phonetics: any[]): string {
+    const phoneticWithAudio = phonetics.find((phonetic) => phonetic.audio);
+    return phoneticWithAudio ? phoneticWithAudio.audio : 'Not found';
   }
 
-  // public objectKeys(obj: { [key: string]: {} }): string[] {
-  //   if (obj) {
-  //     return Object.keys(obj);
-  //   } else {
-  //     return [];
-  //   }
-  // }
+  public playAudio(audioSrc: string) {
+    const audio = new Audio(audioSrc);
+    audio.play();
+  }
 }
