@@ -24,11 +24,16 @@ export class AppComponent {
   public results: Word[] = [];
   public fontClass = '';
   private isDarkTheme = false;
+  public errorMessage: string = '';
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private appService: AppService
   ) {}
+
+  handleErrorEvent(errorMessage: string) {
+    this.errorMessage = errorMessage;
+  }
 
   private applyTheme() {
     if (this.isDarkTheme) {
